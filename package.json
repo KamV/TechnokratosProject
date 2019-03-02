@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "backend-start": "node api/api.js",
+    "start": "ng serve & node api/api.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -21,6 +22,7 @@
     "@angular/router": "~7.2.0",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
+    "express": "^4.16.4",
     "jquery": "^3.3.1",
     "ng2-simple-smooth-scroll": "^0.3.0",
     "rxjs": "~6.3.3",

@@ -31,7 +31,7 @@ export class NewsListComponent implements OnInit {
   }
 
   getNews() {
-    this.news = this.newsListService.getNews();
+     this.newsListService.getNews().subscribe(data => this.news = data);
   }
 
 }

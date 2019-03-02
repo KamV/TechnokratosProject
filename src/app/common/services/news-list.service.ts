@@ -1,32 +1,29 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import {Observable} from 'rxjs';
+import { map } from 'rxjs/operators';
 import { INewsItem, INewsDetail } from '../../interfaces';
+import { BASE_URL } from '../../../config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewsListService {
 
-  private news: INewsItem[] = [
-    { id:'1', src: 'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjJo8i-jePgAhVMPpoKHfSwCgcQjRx6BAgBEAU&url=https%3A%2F%2Fmirpozitiva.ru%2Farticles%2F1775-romanticheskie-kartinki.html&psig=AOvVaw2TOk3UeGXiP7pFYwKOoZiZ&ust=1551604001538799', description: 'First News'},
-    { id:'2', src: 'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjJo8i-jePgAhVMPpoKHfSwCgcQjRx6BAgBEAU&url=https%3A%2F%2Fmirpozitiva.ru%2Farticles%2F1775-romanticheskie-kartinki.html&psig=AOvVaw2TOk3UeGXiP7pFYwKOoZiZ&ust=1551604001538799', description: 'Second News'},
-    { id:'3', src: 'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjJo8i-jePgAhVMPpoKHfSwCgcQjRx6BAgBEAU&url=https%3A%2F%2Fmirpozitiva.ru%2Farticles%2F1775-romanticheskie-kartinki.html&psig=AOvVaw2TOk3UeGXiP7pFYwKOoZiZ&ust=1551604001538799', description: 'Third News'},
-    { id:'4', src: 'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjJo8i-jePgAhVMPpoKHfSwCgcQjRx6BAgBEAU&url=https%3A%2F%2Fmirpozitiva.ru%2Farticles%2F1775-romanticheskie-kartinki.html&psig=AOvVaw2TOk3UeGXiP7pFYwKOoZiZ&ust=1551604001538799', description: 'Third News'}
-  ];
+  constructor(private http: HttpClient) { }
 
-  private newsDetail: INewsDetail = { title: 'News title', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam non labore facere ducimus laboriosam, magni esse? Provident accusamus et repellat, maxime reprehenderit tempora assumenda asperiores adipisci. Eaque corporis suscipit quam.' };
-
-  constructor() { }
-
-  getNews(): INewsItem[] {
-    return this.news;
+  getNews(): Observable<INewsItem[]> {
+    return this.http.get<INewsItem[]>(BASE_URL + 'get-news');
   }
 
-  getNewsDetail(newsId): INewsDetail {
-    return this.newsDetail;
+  getNewsDetail(newsId): Observable<INewsDetail> {
+    let params = new HttpParams().set('news_id', newsId);
+    return this.http.get<INewsDetail>(BASE_URL + 'get-news-detail', { params: params });
   }
 
-  getRelatedNews(newsId): INewsItem[] {
-    return this.news;
+  getRelatedNews(newsId): Observable<INewsItem[]> {
+    let params = new HttpParams().set('news_id', newsId);
+    return this.http.get<INewsItem[]>(BASE_URL + 'get-related-news', { params: params });
   }
 
 }

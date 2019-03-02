@@ -15,7 +15,8 @@ import { INewsItem, INewsDetail } from '../../interfaces';
 export class NewsDetailComponent implements OnInit {
 
   isNewsDetail: boolean = true;
-  newsDetail: INewsDetail = null;
+  title: string = null;
+  text: string = null;
   relatedNews: INewsItem[] = [];
 
   constructor(
@@ -34,11 +35,14 @@ export class NewsDetailComponent implements OnInit {
   }
 
   getNewsDetail(newsId) {
-    this.newsDetail = this.newsListService.getNewsDetail(newsId);
+    this.newsListService.getNewsDetail(newsId).subscribe(data => {
+      this.title = data.title;
+      this.text = data.text;
+    });
   }
 
   getRelatedNews(newsId) {
-    this.relatedNews = this.newsListService.getRelatedNews(newsId);
+    this.newsListService.getRelatedNews(newsId).subscribe(data => this.relatedNews = data);
   }
 
 }
