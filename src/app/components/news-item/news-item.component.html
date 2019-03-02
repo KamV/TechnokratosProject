@@ -1,5 +1,5 @@
 <a class="card mb-4 shadow-sm" [routerLink]="['/news-detail', newsItem.id]">
-  <img class="card-img-top" data-src="newsItem.src" alt="Card image cap">
+  <img class="card-img-top" [src]="newsItem.src == '' ? 'https://dummyimage.com/16:12x225/55595c/eceeef.png&text=Thumbnail' : newsItem.src" alt="Card image cap">
   <div class="card-body">
     <p class="card-text">{{newsItem.description}}</p>
   </div>
