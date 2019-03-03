@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-content',
@@ -6,10 +6,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./content.component.styl']
 })
 export class ContentComponent implements OnInit {
-
-  @Input() title: string;
-  @Input() text: string;
-  @Input() isNewsDetail: boolean;
 
   constructor() { }
 

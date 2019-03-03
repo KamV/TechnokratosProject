@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "backend-start": "node api/api.js",
+    "start:backend": "node api/api.js",
     "start": "ng serve & node api/api.js",
     "build": "ng build",
     "test": "ng test",
@@ -22,9 +22,9 @@
     "@angular/router": "~7.2.0",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "jquery": "^3.3.1",
-    "ng2-simple-smooth-scroll": "^0.3.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

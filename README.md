@@ -6,7 +6,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Backend server
 
-Run `npm run backend-start` to start backend server.
+Run `npm run start:backend` to start backend server.
 
 ## Start project
 

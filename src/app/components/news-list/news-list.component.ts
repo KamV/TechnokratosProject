@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { SimpleSmoothScrollService } from 'ng2-simple-smooth-scroll';
-import { SimpleSmoothScrollOption } from 'ng2-simple-smooth-scroll';
 
 import { NewsListService } from '../../common/services/news-list.service';
 import { INewsItem } from '../../interfaces';
@@ -20,13 +18,11 @@ export class NewsListComponent implements OnInit {
 
   constructor(
     private titleService: Title,
-    private simpleSmoothScrollService: SimpleSmoothScrollService,
     private newsListService: NewsListService
   ) { }
 
   ngOnInit() {
     this.titleService.setTitle('News');
-    this.simpleSmoothScrollService.smoothScrollToTop({ duration: 500, easing: 'linear' });
     this.getNews();
   }
 

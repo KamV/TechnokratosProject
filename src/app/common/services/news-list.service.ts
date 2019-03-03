@@ -17,13 +17,11 @@ export class NewsListService {
   }
 
   getNewsDetail(newsId): Observable<INewsDetail> {
-    let params = new HttpParams().set('news_id', newsId);
-    return this.http.get<INewsDetail>(BASE_URL + 'get-news-detail', { params: params });
+    return this.http.get<INewsDetail>(BASE_URL + 'get-news-detail', { params: { news_id: newsId.toString() }});
   }
 
   getRelatedNews(newsId): Observable<INewsItem[]> {
-    let params = new HttpParams().set('news_id', newsId);
-    return this.http.get<INewsItem[]>(BASE_URL + 'get-related-news', { params: params });
+    return this.http.get<INewsItem[]>(BASE_URL + 'get-related-news', { params: { news_id: newsId.toString() }});
   }
 
 }
