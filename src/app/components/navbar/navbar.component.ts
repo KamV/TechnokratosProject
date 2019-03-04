@@ -8,22 +8,22 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   styleUrls: ['./navbar.component.styl'],
   animations: [
     trigger("collapseAnimation", [
-         state('collapsed', style({
+         state('void', style({
             height: '0px',
             overflow: 'hidden'
          })),
-         state('expanded', style({
+         state('*', style({
             height: '*'
          })),
 
-         transition('collapsed <=> expanded', animate('700ms ease-in'))
+         transition('void <=> *', animate('700ms ease-in'))
       ])
   ]
 })
 
 export class NavBarComponent implements OnInit {
 
-  state: string = 'collapsed';
+  collapseExpanded = false;
 
   constructor() { }
 
@@ -31,7 +31,7 @@ export class NavBarComponent implements OnInit {
   }
 
   toggleCollapse() {
-    this.state = this.state === 'collapsed' ? 'expanded' : 'collapsed';
+    this.collapseExpanded = ! this.collapseExpanded;
   }
 
 }

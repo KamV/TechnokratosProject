@@ -11,9 +11,6 @@ import { INewsItem } from '../../interfaces';
 })
 export class NewsListComponent implements OnInit {
 
-  title: string = 'Album example';
-  text: string = "Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.";
-  isNewsDetail: boolean = false;
   news: INewsItem[] = [];
 
   constructor(

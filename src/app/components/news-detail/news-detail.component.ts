@@ -12,8 +12,7 @@ import { INewsItem, INewsDetail } from '../../interfaces';
 })
 export class NewsDetailComponent implements OnInit {
 
-  title: string = null;
-  text: string = null;
+  newsDetail: INewsDetail;
   relatedNews: INewsItem[] = [];
 
   constructor(
@@ -33,20 +32,12 @@ export class NewsDetailComponent implements OnInit {
   }
 
   scrollToTop() {
-    let scrollToTop = window.setInterval(() => {
-      let pos = window.pageYOffset;
-      if (pos > 0) {
-          window.scrollTo(0, pos - 20);
-      } else {
-          window.clearInterval(scrollToTop);
-      }
-    }, 16);
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
   getNewsDetail(newsId) {
     this.newsListService.getNewsDetail(newsId).subscribe(data => {
-      this.title = data.title;
-      this.text = data.text;
+      this.newsDetail = data;
     });
   }
 
